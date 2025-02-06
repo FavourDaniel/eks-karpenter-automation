@@ -75,7 +75,9 @@ kubectl logs -n nvidia-gpu-operator -l app=nvidia-gpu-operator
 It may take a few moments for the GPU operator pod to reach the "ready" state.
 
 ## Set Up MIG partitions
-To set up MIG (Multi-Instance GPU) partitions in Kubernetes using NVIDIA GPUs, you can choose between two strategies: single strategy and mixed strategy. Both approaches allow you to partition the GPU into smaller, isolated instances (MIG devices), but they differ in how these devices are allocated.
+MIG (Multi-Instance GPU) partitions are a feature of NVIDIA A100 and newer GPUs that allow a single physical GPU to be partitioned into multiple smaller, independent instances. Each of these instances (also referred to as "MIG devices") functions as a separate mini-GPU with dedicated memory and compute resources, offering better isolation and more efficient resource allocation.
+
+To set up MIG (Multi-Instance GPU) partitions in Kubernetes using NVIDIA GPUs, you can choose between two strategies: **single strategy** and **mixed strategy**. Both approaches allow you to partition the GPU into smaller, isolated instances (MIG devices), but they differ in how these devices are allocated.
 
 ### Single Strategy vs. Mixed Strategy
 
@@ -164,11 +166,7 @@ kubectl scale deployment mig1.5 --replicas=10
 ### MIG Devices with the Mixed Strategy
 The mixed strategy allows you to partition the GPUs into different sizes, creating flexibility in resource allocation. You can use predefined profiles (e.g., `all-balanced`) or define your own custom partitioning scheme.
 
-1. **Use a Predefined Profile**: For example, the `all-balanced` profile divides the GPU into various sizes, such as:
-
-- 2 slices of 1g.10gb
-- 1 slice of 2g.20gb
-- 1 slice of 3g.40gb
+1. **Use a Predefined Profile**: For example, the `all-balanced` profile divides the GPU into various sizes.
 
 To apply the `all-balanced` profile, label the node like this:
 
