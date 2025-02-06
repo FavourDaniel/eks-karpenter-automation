@@ -54,8 +54,6 @@ terraform init
 
 3. Review and modify `terraform.tfvars`. Ensure the correct values for:
 
-- `vpc_id`: ID of the existing VPC.
-
 - `region`: AWS region for deployment.
 
 4. Generate and review the Terraform plan:
