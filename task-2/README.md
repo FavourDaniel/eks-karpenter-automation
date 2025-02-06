@@ -59,8 +59,8 @@ helm install --wait --generate-name \
     --set migManager.enabled=true \
     --set migManager.WITH_REBOOT=true \
     --set operator.defaultRuntime=containerd \
-    --set gfd.version=v0.8.1 \
-    --set devicePlugin.version=v0.14.0 \
+    --set gfd.version=v0.17.0 \
+    --set devicePlugin.version=v0.17.0 \
     --set migManager.default=all-balanced \
     --version=v24.9.2
 ``` 
