@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: x86-workload
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: x86-workload
+  template:
+    metadata:
+      labels:
+        environment: x86-workload
+    spec:
+      nodeSelector:
+        environment: x86-workload # Target x86 nodes
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"

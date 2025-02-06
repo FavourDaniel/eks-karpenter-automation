@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arm64-workload
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: arm64-workload
+  template:
+    metadata:
+      labels:
+        environment: arm64-workload
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64 # Target ARM64 nodes
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
