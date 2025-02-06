@@ -33,7 +33,7 @@ This repository provides Terraform code to deploy an Amazon EKS cluster on AWS u
 ## Prerequisites
 - An AWS Account
 - AWS CLI configured with necessary IAM permissions
-- An existing AWS VPC
+- AWS VPC (one has been provided in this repo)
 - Terraform installed
 - kubectl to interact with your cluster
 
