@@ -123,6 +123,5 @@ terraform destroy -auto-approve
 
 ## Notes
 - Ensure IAM roles and policies for Karpenter are properly configured.
-- The existing VPC must have appropriate subnets and routing.
 - Karpenter provisions nodes dynamically; use `nodeSelector` or `affinity` rules where needed.
 - A service-linked role must exist for AWS to allow Spot instance creation.
