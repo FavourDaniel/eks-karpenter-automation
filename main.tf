@@ -1,13 +1,12 @@
-# Your existing VPC
-# module "vpc" {
-#   source               = "./modules/vpc"
-#   cidr_block           = var.cidr_block
-#   instance_tenancy     = var.instance_tenancy
-#   enable_dns_hostnames = var.enable_dns_hostnames
-#   az_count             = var.az_count
-#   tag                  = var.tag
-#   cluster_name         = var.cluster_name
-# }
+module "vpc" {
+  source               = "./modules/vpc"
+  cidr_block           = var.cidr_block
+  instance_tenancy     = var.instance_tenancy
+  enable_dns_hostnames = var.enable_dns_hostnames
+  az_count             = var.az_count
+  tag                  = var.tag
+  cluster_name         = var.cluster_name
+}
 
 module "eks" {
   source             = "./modules/eks/control_plane"

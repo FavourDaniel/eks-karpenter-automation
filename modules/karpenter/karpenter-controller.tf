@@ -1,5 +1,5 @@
 
-##
+## IAM OpenID Connect provider for AWS EKS authentication
 resource "aws_iam_openid_connect_provider" "default" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.tls_certificate.default.certificates[0].sha1_fingerprint]

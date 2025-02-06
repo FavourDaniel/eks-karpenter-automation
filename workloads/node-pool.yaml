@@ -10,17 +10,14 @@ spec:
       labels:
         environment: x86-workload
     spec:
-      ## Links to the previously defined EC2NodeClass via nodeClassRef
       nodeClassRef:
         name: x86 
         kind: EC2NodeClass
         group: karpenter.k8s.aws 
-## Node requirements that Karpenter will use to select suitable EC2 instances
       requirements:
         - key: "karpenter.k8s.aws/instance-family"
           operator: In
           values: ["m5", "m5d", "c5", "c5d", "c4", "r4"] # x86 instance families
-          # minValues: 5
         - key: "karpenter.k8s.aws/instance-cpu"
           operator: In
           values: ["4", "8", "16", "32"]
@@ -32,7 +29,7 @@ spec:
           values: ["eu-west-1a", "eu-west-1b"]
         - key: "kubernetes.io/arch"
           operator: In
-          values: ["amd64"] # Target x86 architecture
+          values: ["amd64"]
         - key: "karpenter.sh/capacity-type"
           operator: In
           values: ["spot", "on-demand"]
@@ -47,18 +44,15 @@ spec:
     metadata:
       labels:
         environment: arm64-workload
-      ## Links to the previously defined EC2NodeClass via nodeClassRef
     spec:
       nodeClassRef:
         name: arm64
         kind: EC2NodeClass
         group: karpenter.k8s.aws  
-## Node requirements that Karpenter will use to select suitable EC2 instances
       requirements:
         - key: "karpenter.k8s.aws/instance-family"
           operator: In
           values: ["m6g", "c6g", "r6g"] # ARM-based instance families for Graviton
-          # minValues: 3
         - key: "karpenter.k8s.aws/instance-cpu"
           operator: In
           values: ["4", "8", "16", "32"]
@@ -70,7 +64,7 @@ spec:
           values: ["eu-west-1a", "eu-west-1b"]
         - key: "kubernetes.io/arch"
           operator: In
-          values: ["arm64"] # Target ARM64 architecture
+          values: ["arm64"]
         - key: "karpenter.sh/capacity-type"
           operator: In
           values: ["spot", "on-demand"]

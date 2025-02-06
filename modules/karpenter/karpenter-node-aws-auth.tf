@@ -10,12 +10,11 @@ locals {
 # Update the aws-auth ConfigMap to allow Karpenter worker nodes to join the cluster
 resource "kubernetes_config_map_v1_data" "aws_auth" {
   metadata {
-    name      = "aws-auth"                  # Name of the authentication ConfigMap used by EKS
-    namespace = "kube-system"               # Namespace where authentication configurations are stored
+    name      = "aws-auth"                
+    namespace = "kube-system"    
   }
 
   data = {
-    # Add the Karpenter IAM role to the list of existing roles so nodes can authenticate
     mapRoles = jsonencode(
       concat(
         local.existing_roles,   # Preserve existing IAM role mappings

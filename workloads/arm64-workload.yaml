@@ -13,7 +13,7 @@ spec:
         environment: arm64-workload
     spec:
       nodeSelector:
-        kubernetes.io/arch: arm64 # Target ARM64 nodes
+        kubernetes.io/arch: arm64
       containers:
       - name: nginx
         image: nginx
