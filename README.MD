@@ -3,7 +3,7 @@ Automated deployment of an Amazon EKS cluster with intelligent node provisioning
 
 ## Overview
 
-This repository contains Terraform Infrastructure as Code used to provision a production-ready Amazon EKS environment on AWS.
+This repository contains Terraform Infrastructure as Code used to provision a production-ready Amazon EKS environment.
 
 The platform integrates Karpenter to enable dynamic node autoscaling based on real-time Kubernetes workload demands. It supports both x86 and ARM64 (AWS Graviton) compute architectures and leverages EC2 Spot Instances to optimize infrastructure cost while maintaining scalability and performance.
 
@@ -48,7 +48,7 @@ The platform integrates Karpenter to enable dynamic node autoscaling based on re
 ## Prerequisites
 - AWS Account
 - AWS CLI configured with necessary IAM permissions
-- Existing AWS VPC (one has been provided in this repo)
+- Existing AWS VPC (a reference configuration is provided in this repository)
 - Terraform installed
 - kubectl installed
 
