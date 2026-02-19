@@ -8,12 +8,13 @@ This repository contains Terraform Infrastructure as Code used to provision a pr
 The platform integrates Karpenter to enable dynamic node autoscaling based on real-time Kubernetes workload demands. It supports both x86 and ARM64 (AWS Graviton) compute architectures and leverages EC2 Spot Instances to optimize infrastructure cost while maintaining scalability and performance.
 
 
+### Key Features
 
 - **Amazon EKS Cluster Deployment**  
-  Provisions a fully managed Kubernetes cluster using Terraform, including networking, IAM roles, and compute configuration.
+  Provisions a fully managed Kubernetes cluster on AWS using Terraform, including the required infrastructure such as networking, IAM roles, and compute configuration.
 
 - **Karpenter Integration**  
-  Automatically provisions and terminates EC2 worker nodes based on Kubernetes pod scheduling demands.
+  Automatically provisions and terminates EC2 worker nodes based on Kubernetes pod scheduling demands, enabling real-time cluster scaling.
 
 - **Multi-Architecture Support**  
   Supports both x86 and ARM64 (AWS Graviton) instance types for architecture-aware workload scheduling.
@@ -22,7 +23,7 @@ The platform integrates Karpenter to enable dynamic node autoscaling based on re
   Prioritizes EC2 Spot Instances to significantly reduce compute cost.
 
 - **Dynamic Node Provisioning**  
-  Launches capacity on demand and removes underutilized nodes to maintain efficient cluster utilization.
+  Launches new nodes on demand when workloads require additional resources and removes underutilized nodes to maintain efficient cluster utilization.
 
 
 ## Repository Structure
