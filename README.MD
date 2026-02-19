@@ -1,14 +1,23 @@
-# Automate AWS EKS cluster setup with Karpenter, while utilizing Graviton and Spot instances
+# Cost-Optimized Kubernetes Platform on AWS (EKS + Karpenter)
+Automated deployment of an Amazon EKS cluster with intelligent node provisioning using Karpenter, supporting Graviton (ARM64) and Spot Instances for cost-efficient, workload-driven scaling.
 
 ## Overview
 
-This repository provides Terraform code to deploy an Amazon EKS cluster on AWS using the latest available version. The cluster is configured with Karpenter for dynamic autoscaling and supports both x86 and ARM64 (Graviton) instance types, including Spot instances for cost optimization.
+This repository contains Terraform Infrastructure as Code used to provision a production-ready Amazon EKS environment on AWS.
 
-### Features
-- **Amazon EKS:** Creates an EKS cluster in an existing VPC.
-- **Karpenter Integration:** Deploys Karpenter to handle node provisioning dynamically.
-- **Multi-Architecture Support:** Allows scheduling workloads on both x86 and ARM64 nodes.
-- **Spot Instance Utilization:** Optimizes costs by leveraging AWS Spot instances.
+The platform integrates Karpenter to enable dynamic node autoscaling based on real-time Kubernetes workload demands. It supports both x86 and ARM64 (AWS Graviton) compute architectures and leverages EC2 Spot Instances to optimize infrastructure cost while maintaining scalability and performance.
+
+### Key Features
+- **Amazon EKS Cluster Deployment:** 
+  Provisions a fully managed Kubernetes cluster on AWS using Terraform, including the required infrastructure such as networking, IAM roles, and compute configuration.
+- **Karpenter Integration:** 
+  Installs and configures Karpenter to automatically provision and terminate EC2 worker nodes based on Kubernetes pod scheduling demands, enabling real-time cluster scaling.
+- **Multi-Architecture Support:** 
+  Supports both x86 and ARM64 (AWS Graviton) instance types, allowing workloads to be scheduled on the appropriate CPU architecture depending on container compatibility.
+- **Spot Instance Utilization:** 
+  Configures Karpenter to prioritize EC2 Spot Instances, enabling the cluster to use discounted spare AWS capacity for significant compute cost savings.
+- **Dynamic Node Provisioning:**
+  Automatically launches new nodes when workloads require additional resources and removes underutilized nodes to maintain efficient cluster utilization.
 
 ## Repository Structure
 ```
@@ -29,13 +38,12 @@ This repository provides Terraform code to deploy an Amazon EKS cluster on AWS u
 └── variables.tf 
 ```
 
-
 ## Prerequisites
-- An AWS Account
+- AWS Account
 - AWS CLI configured with necessary IAM permissions
-- AWS VPC (one has been provided in this repo)
+- Existing AWS VPC (one has been provided in this repo)
 - Terraform installed
-- kubectl to interact with your cluster
+- kubectl installed
 
 
 ## Deployment Steps
