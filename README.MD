@@ -7,17 +7,23 @@ This repository contains Terraform Infrastructure as Code used to provision a pr
 
 The platform integrates Karpenter to enable dynamic node autoscaling based on real-time Kubernetes workload demands. It supports both x86 and ARM64 (AWS Graviton) compute architectures and leverages EC2 Spot Instances to optimize infrastructure cost while maintaining scalability and performance.
 
-### Key Features
-- **Amazon EKS Cluster Deployment:** 
-  Provisions a fully managed Kubernetes cluster on AWS using Terraform, including the required infrastructure such as networking, IAM roles, and compute configuration.
-- **Karpenter Integration:** 
-  Installs and configures Karpenter to automatically provision and terminate EC2 worker nodes based on Kubernetes pod scheduling demands, enabling real-time cluster scaling.
-- **Multi-Architecture Support:** 
-  Supports both x86 and ARM64 (AWS Graviton) instance types, allowing workloads to be scheduled on the appropriate CPU architecture depending on container compatibility.
-- **Spot Instance Utilization:** 
-  Configures Karpenter to prioritize EC2 Spot Instances, enabling the cluster to use discounted spare AWS capacity for significant compute cost savings.
-- **Dynamic Node Provisioning:**
-  Automatically launches new nodes when workloads require additional resources and removes underutilized nodes to maintain efficient cluster utilization.
+
+
+- **Amazon EKS Cluster Deployment**  
+  Provisions a fully managed Kubernetes cluster using Terraform, including networking, IAM roles, and compute configuration.
+
+- **Karpenter Integration**  
+  Automatically provisions and terminates EC2 worker nodes based on Kubernetes pod scheduling demands.
+
+- **Multi-Architecture Support**  
+  Supports both x86 and ARM64 (AWS Graviton) instance types for architecture-aware workload scheduling.
+
+- **Spot Instance Utilization**  
+  Prioritizes EC2 Spot Instances to significantly reduce compute cost.
+
+- **Dynamic Node Provisioning**  
+  Launches capacity on demand and removes underutilized nodes to maintain efficient cluster utilization.
+
 
 ## Repository Structure
 ```
