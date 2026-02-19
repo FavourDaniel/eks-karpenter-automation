@@ -46,6 +46,7 @@ The platform integrates Karpenter to enable dynamic node autoscaling based on re
 - kubectl installed
 
 
+
 ## Deployment Steps
 1. Clone the Repository
 
@@ -60,32 +61,38 @@ cd <repo-name>
 terraform init
 ```
 
-3. Review and modify `terraform.tfvars`. Ensure the correct values for:
+3. Configure Variables
+
+Review and modify `terraform.tfvars` to ensure correct values such as:
 
 - `region`: AWS region for deployment.
 
-4. Generate and review the Terraform plan:
+
+4. Review Terraform Plan
 
 ```
 terraform plan
 ```
-This will show the resources Terraform will create or modify.
+This displays the infrastructure resources Terraform will create or modify.
 
-5. Apply the Terraform Configuration
+
+5. Apply Configuration
 
 ```
 terraform apply -auto-approve
 ```
-This provisions the EKS cluster along with Karpenter and necessary configurations.
+This provisions the EKS cluster along with Karpenter and required infrastructure components.
 
 6. Configure Kubectl
 ```
 aws eks update-kubeconfig --region <your-region> --name <your-cluster-name>
 ```
 
+
+
 ## Deploying Workloads
 
-Karpenter provisions nodes dynamically based on pod requirements.
+Karpenter provisions nodes dynamically based on pod resource requirements.
 
 1. Deploy an x86-based Workload
 
@@ -105,31 +112,43 @@ kubectl apply -f workloads/arm64-workload.yaml
 kubectl get pods -o wide
 ```
 
-You should see the pods scheduled on the appropriate node architectures.
+Pods will be scheduled onto the appropriate node architectures.
+
 
 
 ## Monitoring Karpenter
-1. Check Karpenter logs:
+
+1. View Karpenter logs:
 
 ```
 kubectl logs -n karpenter -l app.kubernetes.io/name=karpenter
 ```
 
-2. List running nodes:
+2. List active/running nodes:
 
 ```
 kubectl get nodes -o wide
 ```
 
+
+
 ## Cleanup
 
-To destroy the infrastructure:
+To destroy all provisioned infrastructure:
 
 ```
 terraform destroy -auto-approve
 ```
 
+
+
 ## Notes
-- Ensure IAM roles and policies for Karpenter are properly configured.
-- Karpenter provisions nodes dynamically; use `nodeSelector` or `affinity` rules where needed.
-- A service-linked role must exist for AWS to allow Spot instance creation.
+- Ensure IAM roles and policies required by Karpenter are properly configured.
+- Karpenter provisions nodes dynamically; use `nodeSelector` or `affinity` rules for architecture-specific workload scheduling.
+- A service-linked role must exist to allow EC2 Spot instance provisioning.
+
+
+
+## Outcome
+
+This project demonstrates the design of a scalable, cost-optimized Kubernetes platform that eliminates static node provisioning by enabling workload-driven infrastructure scaling.
